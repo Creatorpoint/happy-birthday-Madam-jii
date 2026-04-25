@@ -32,12 +32,12 @@ button{padding:10px 16px;border:none;border-radius:10px;background:#fff;color:#e
 <div style='position:absolute;bottom:70px;left:20px;width:200px;height:70px;background:linear-gradient(#fffafc,#ffd6e7,#ffc1da);border-radius:18px'></div>\
 <div style='position:absolute;bottom:130px;left:55px;width:130px;height:45px;background:linear-gradient(#fff,#ffe8f0);border-radius:16px'></div>\
 <div style='position:absolute;top:18px;left:132px;width:10px;height:42px;background:#fff;border-radius:6px'></div><div id='candle' style='position:absolute;top:-8px;left:126px;font-size:34px;animation:flicker .6s infinite'>🔥</div>\
-<div style='position:absolute;bottom:95px;left:55px;font-size:22px;font-weight:bold;color:#ff7ad9;text-shadow:0 0 10px #ff4df0,0 0 20px #ff4df0'>💖 Msargam Darling 💖</div>\
+<div style='margin:12px auto 6px auto;font-size:24px;font-weight:bold;color:#ff7ad9;text-shadow:0 0 10px #ff4df0,0 0 20px #ff4df0;text-align:center'>💖 Msargam Darling 💖</div>\
 </div><div id='cakeMsg' style='font-size:1.2rem;margin-top:8px'>Tap the big cake to cut 🎂</div>
 <div id='msg'>Candle jalane ke liye button dabao ✨</div><button onclick='lightCandle()' style='padding:10px 18px;border:none;border-radius:12px;background:#ff9f1c;color:#fff;font-weight:bold;margin-top:10px;cursor:pointer'>🕯️ Light Candle</button><div id='countdown' style='font-size:1.2rem;margin-top:8px;font-weight:bold'></div><button onclick='showGift()' style='padding:10px 18px;border:none;border-radius:12px;background:#ffd700;color:#000;font-weight:bold;margin-top:10px;cursor:pointer'>🎁 Surprise Gift</button><div id='giftBox' style='display:none;margin-top:15px;font-size:1.3rem;background:rgba(255,255,255,.18);padding:15px;border-radius:16px'>💖 You are the best gift in my life, Msargam Baby 💖</div>
 <div class='controls'>
-<input id='imgUrl' placeholder='Catbox image link paste karo'><br>
-<input id='songUrl' placeholder='Catbox song link paste karo'><br>
+<input id='imgUrl' placeholder='https://files.catbox.moe/jnhbpr.jpg'><br>
+<input id='songUrl' placeholder='https://files.catbox.moe/c90gos.mp3'><br>
 <button onclick='applyMedia()'>Apply Media</button>
 <button onclick='playSong()'>▶ Play Music</button><button onclick='document.documentElement.requestFullscreen?.()'>📱 Fullscreen App</button>
 </div>
@@ -57,7 +57,7 @@ document.body.addEventListener('click',()=>{playSong();fireworks();}
 window.addEventListener('load',()=>{const a=document.getElementById('song');a.muted=true;a.play().then(()=>{setTimeout(()=>{a.muted=false;a.volume=1;},800);}).catch(()=>{});setTimeout(()=>{playSong();},1200);});,{once:true});
 function showGift(){document.getElementById('giftBox').style.display='block';}
 setInterval(()=>{let h=document.createElement('div');h.innerHTML='💖';h.style.position='fixed';h.style.left=Math.random()*100+'vw';h.style.top='-20px';h.style.fontSize='24px';h.style.zIndex='1';h.style.animation='float 6s linear forwards';document.body.appendChild(h);setTimeout(()=>h.remove(),6000);},500);
-function updateCountdown(){const now=new Date();const next=new Date(now.getFullYear(),11,31,23,59,59);const diff=next-now;const d=Math.floor(diff/86400000),h=Math.floor(diff%86400000/3600000),m=Math.floor(diff%3600000/60000),s=Math.floor(diff%60000/1000);document.getElementById('countdown').innerText='⏳ Our Love Timer: '+d+'d '+h+'h '+m+'m '+s+'s';}
+function updateCountdown(){const now=new Date();const next=new Date('2026-04-26T00:00:00');const diff=next-now;if(diff<=0){document.getElementById('countdown').innerText='🎉 Happy Birthday Msargam Darling ❤️';playSong();fireworks();return;}const d=Math.floor(diff/86400000),h=Math.floor(diff%86400000/3600000),m=Math.floor(diff%3600000/60000),s=Math.floor(diff%60000/1000);document.getElementById('countdown').innerText='⏳ Birthday Countdown: '+d+'d '+h+'h '+m+'m '+s+'s';}
 setInterval(updateCountdown,1000);updateCountdown();
 setInterval(()=>{for(let i=0;i<8;i++){let r=document.createElement('div');r.innerHTML='🌹';r.style.position='fixed';r.style.left=Math.random()*100+'vw';r.style.top='-20px';r.style.fontSize='24px';r.style.zIndex='4';r.style.opacity='.9';document.body.appendChild(r);setTimeout(()=>r.remove(),6000);} },1500);
 setInterval(()=>{fireworks();},5000);
