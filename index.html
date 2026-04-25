@@ -26,7 +26,7 @@ button{padding:10px 16px;border:none;border-radius:10px;background:#fff;color:#e
 <body>
 <div id='surpriseOverlay' style='position:fixed;inset:0;background:radial-gradient(circle,#1b0128,#000);z-index:999;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#fff'>
 <div style='font-size:2rem;margin-bottom:18px;letter-spacing:1px'>🎁 A Special Surprise for Sargam Baby</div>
-<button onclick='openSurprise()' style='padding:16px 28px;border:none;border-radius:18px;font-size:1.2rem;font-weight:bold;background:linear-gradient(90deg,#ff4da6,#ffd1e8);cursor:pointer;box-shadow:0 0 25px rgba(255,105,180,.5)'>Open Surprise Box 💖</button>
+<button id='openBtn' style='padding:16px 28px;border:none;border-radius:18px;font-size:1.2rem;font-weight:bold;background:linear-gradient(90deg,#ff4da6,#ffd1e8);cursor:pointer;box-shadow:0 0 25px rgba(255,105,180,.5)'>Open Surprise Box 💖</button>
 </div>
 <div class='container' id='mainSite' style='display:none'>
 <h1 style='font-size:2.8rem;letter-spacing:1px;background:linear-gradient(90deg,#fff,#ff9bd5,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 20px rgba(255,255,255,.2)'>Happy Birthday Sargam Baby ❤️</h1><p id='shayari' style='font-size:1.3rem;max-width:700px;margin:10px auto;line-height:1.8;background:rgba(255,255,255,.12);padding:16px;border-radius:20px;backdrop-filter:blur(8px);font-family:cursive,Segoe Script,Brush Script MT'></p>
@@ -56,7 +56,7 @@ let ang=0;setInterval(()=>{const imgs=document.querySelectorAll('.orbitImg');img
 function applyMedia(){const i=document.getElementById('imgUrl').value.trim();const s=document.getElementById('songUrl').value.trim();if(i){photo=i;renderPhotos();}if(s){document.getElementById('song').src=s;}}
 function playSong(){const a=document.getElementById('song');a.volume=1;a.play().then(()=>{}).catch(()=>{document.getElementById('msg').innerText='▶ Music play button dabao';});}
 for(let i=0;i<20;i++){let b=document.createElement('div');b.className='balloon';b.style.left=Math.random()*100+'vw';b.style.background='hsl('+Math.random()*360+',90%,60%)';b.style.animationDuration=(6+Math.random()*6)+'s';b.onclick=()=>b.classList.add('pop');document.body.appendChild(b);} 
-function lightCandle(){document.getElementById('candle').textContent=';document.getElementById('msg').innerText='Candle jal gayi ✨ Make a wish ❤️';playSong();}
+function lightCandle(){document.getElementById('candle').textContent='🔥';document.getElementById('msg').innerText='Candle jal gayi ✨ Make a wish ❤️';playSong();}
 document.body.addEventListener('click',()=>{playSong();fireworks();}
 window.addEventListener('load',()=>{const a=document.getElementById('song');a.volume=1;a.muted=true;a.play().then(()=>{setTimeout(()=>{a.muted=false;a.play();},600);}).catch(()=>{});setTimeout(()=>{playSong();},1000);document.addEventListener('touchstart',()=>{a.muted=false;playSong();},{once:true});document.addEventListener('click',()=>{a.muted=false;playSong();},{once:true});});,{once:true});
 function showGift(){document.getElementById('giftBox').style.display='block';}
@@ -73,6 +73,7 @@ Janamdin par rab se itni si dua hai,
 Har khushi tere kadmo me ho, tu meri sadaa hai. 💖';const el=document.getElementById('shayari');el.innerHTML='';let i=0;const t=setInterval(()=>{el.innerHTML+=text[i]==='
 '?'<br>':text[i];i++;if(i>=text.length)clearInterval(t);},55);} 
 function openSurprise(){document.getElementById('surpriseOverlay').style.display='none';document.getElementById('mainSite').style.display='flex';playSong();typeShayari();fireworks();}
+document.addEventListener('DOMContentLoaded',()=>{const b=document.getElementById('openBtn');if(b){b.addEventListener('click',openSurprise);b.addEventListener('touchstart',openSurprise,{once:true});}});
 </script>
 </body>
 </html>
