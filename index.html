@@ -20,19 +20,19 @@ button{padding:10px 16px;border:none;border-radius:10px;background:#fff;color:#e
 .pop{animation:pop .5s forwards}
 @keyframes pop{to{transform:scale(2);opacity:0}}
 #msg{font-size:1.3rem;margin-top:10px}
-@keyframes flicker{0%{transform:scale(1) rotate(-3deg);opacity:1}50%{transform:scale(1.18) rotate(3deg);opacity:.75}100%{transform:scale(.95) rotate(-2deg);opacity:1}}
+@keyframes flicker{0%{transform:scale(1) rotate(-3deg);opacity:1}50%{transform:scale(1.18) rotate(3deg);opacity:.75}100%{transform:scale(.95) rotate(-2deg);opacity:1}} @keyframes blinkText{0%,100%{opacity:1;text-shadow:0 0 8px #fff,0 0 16px #ff69b4}50%{opacity:.35;text-shadow:0 0 18px #ff69b4,0 0 28px #fff}}
 </style>
 </head>
 <body>
 <div class='container'>
-<h1>Happy Birthday Msargam Baby ❤️</h1><p style='font-size:1.25rem;max-width:700px;margin:10px auto;line-height:1.7;background:rgba(255,255,255,.15);padding:14px;border-radius:18px;backdrop-filter:blur(6px)'>🎉 Teri muskaan meri duniya hai, tera saath meri jaan hai.<br>Janamdin ke is khaas din par bas itni dua hai,<br>Har khushi tere kadmo me ho aur tu hamesha meri rahe. 💖</p>
+<h1>Happy Birthday Msargam Baby ❤️</h1><p id='shayari' style='font-size:1.25rem;max-width:700px;margin:10px auto;line-height:1.7;background:rgba(255,255,255,.15);padding:14px;border-radius:18px;backdrop-filter:blur(6px);animation:blinkText 1s infinite'>🎉 Teri muskaan meri duniya hai, tera saath meri jaan hai.<br>Janamdin ke is khaas din par bas itni dua hai,<br>Har khushi tere kadmo me ho aur tu hamesha meri rahe. 💖</p>
 <div id='photoOrbit' style='margin-bottom:18px;z-index:6;position:relative'></div>
 <div class='cake' onclick='cutCake()' style='position:relative;width:300px;height:260px;margin:0 auto;transform-style:preserve-3d;perspective:800px'>\
 <div style='position:absolute;bottom:0;width:240px;height:90px;background:linear-gradient(#6b3b12,#3b1f08,#2a1405);border-radius:20px;box-shadow:0 18px 25px rgba(0,0,0,.25)'></div>\
 <div style='position:absolute;bottom:70px;left:20px;width:200px;height:70px;background:linear-gradient(#fffafc,#ffd6e7,#ffc1da);border-radius:18px'></div>\
 <div style='position:absolute;bottom:130px;left:55px;width:130px;height:45px;background:linear-gradient(#fff,#ffe8f0);border-radius:16px'></div>\
 <div style='position:absolute;top:18px;left:132px;width:10px;height:42px;background:#fff;border-radius:6px'></div><div id='candle' style='position:absolute;top:-8px;left:126px;font-size:34px;animation:flicker .6s infinite'>🔥</div>\
-<div style='position:absolute;bottom:95px;left:55px;font-size:22px;font-weight:bold;color:#ff7ad9;text-shadow:0 0 10px #ff4df0,0 0 20px #ff4df0'>💖 Msargam Darling 💖</div><div id='knife' style='position:absolute;right:-35px;top:95px;font-size:48px;transition:1s'>🔪</div>\
+<div style='position:absolute;bottom:95px;left:55px;font-size:22px;font-weight:bold;color:#ff7ad9;text-shadow:0 0 10px #ff4df0,0 0 20px #ff4df0'>💖 Msargam Darling 💖</div>\
 </div><div id='cakeMsg' style='font-size:1.2rem;margin-top:8px'>Tap the big cake to cut 🎂</div>
 <div id='msg'>Candle jalane ke liye button dabao ✨</div><button onclick='lightCandle()' style='padding:10px 18px;border:none;border-radius:12px;background:#ff9f1c;color:#fff;font-weight:bold;margin-top:10px;cursor:pointer'>🕯️ Light Candle</button><div id='countdown' style='font-size:1.2rem;margin-top:8px;font-weight:bold'></div><button onclick='showGift()' style='padding:10px 18px;border:none;border-radius:12px;background:#ffd700;color:#000;font-weight:bold;margin-top:10px;cursor:pointer'>🎁 Surprise Gift</button><div id='giftBox' style='display:none;margin-top:15px;font-size:1.3rem;background:rgba(255,255,255,.18);padding:15px;border-radius:16px'>💖 You are the best gift in my life, Msargam Baby 💖</div>
 <div class='controls'>
@@ -62,7 +62,7 @@ setInterval(updateCountdown,1000);updateCountdown();
 setInterval(()=>{for(let i=0;i<8;i++){let r=document.createElement('div');r.innerHTML='🌹';r.style.position='fixed';r.style.left=Math.random()*100+'vw';r.style.top='-20px';r.style.fontSize='24px';r.style.zIndex='4';r.style.opacity='.9';document.body.appendChild(r);setTimeout(()=>r.remove(),6000);} },1500);
 setInterval(()=>{fireworks();},5000);
 function fireworks(){for(let i=0;i<40;i++){let f=document.createElement('div');f.innerHTML='🎆';f.style.position='fixed';f.style.left=Math.random()*100+'vw';f.style.top=Math.random()*70+'vh';f.style.fontSize=(20+Math.random()*24)+'px';f.style.zIndex='5';document.body.appendChild(f);setTimeout(()=>f.remove(),1800);} }
-function cutCake(){document.getElementById('knife').style.transform='translateX(-120px) rotate(-35deg)';document.getElementById('cakeMsg').innerText='🎉 Cake Cut Successfully! Happy Birthday Msargam Baby ❤️';for(let i=0;i<25;i++){let e=document.createElement('div');e.innerHTML='✨';e.style.position='fixed';e.style.left=Math.random()*100+'vw';e.style.top=Math.random()*100+'vh';e.style.fontSize='26px';e.style.zIndex='3';document.body.appendChild(e);setTimeout(()=>e.remove(),2000);}playSong();}
+function cutCake(){document.getElementById('cakeMsg').innerText='🎉 Cake Cut Successfully! Happy Birthday Msargam Baby ❤️';for(let i=0;i<25;i++){let e=document.createElement('div');e.innerHTML='✨';e.style.position='fixed';e.style.left=Math.random()*100+'vw';e.style.top=Math.random()*100+'vh';e.style.fontSize='26px';e.style.zIndex='3';document.body.appendChild(e);setTimeout(()=>e.remove(),2000);}playSong();}
 </script>
 </body>
 </html>
