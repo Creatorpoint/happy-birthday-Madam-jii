@@ -25,10 +25,10 @@ button{padding:10px 16px;border:none;border-radius:10px;background:#fff;color:#e
 <body>
 <div class='container'>
 <h1>Happy Birthday Msargam Baby ❤️</h1><p style='font-size:1.25rem;max-width:700px;margin:10px auto;line-height:1.7;background:rgba(255,255,255,.15);padding:14px;border-radius:18px;backdrop-filter:blur(6px)'>🎉 Teri muskaan meri duniya hai, tera saath meri jaan hai.<br>Janamdin ke is khaas din par bas itni dua hai,<br>Har khushi tere kadmo me ho aur tu hamesha meri rahe. 💖</p>
-<div id='photoOrbit'></div>
-<div class='cake' onclick='cutCake()' style='position:relative;width:240px;height:220px;margin:0 auto;transform-style:preserve-3d'>\
-<div style='position:absolute;bottom:0;width:240px;height:90px;background:linear-gradient(#ff9ecf,#ff4d88);border-radius:20px;box-shadow:0 18px 25px rgba(0,0,0,.25)'></div>\
-<div style='position:absolute;bottom:70px;left:20px;width:200px;height:70px;background:linear-gradient(#fff0f6,#ffd6e7);border-radius:18px'></div>\
+<div id='photoOrbit' style='margin-bottom:10px;z-index:4'></div>
+<div class='cake' onclick='cutCake()' style='position:relative;width:260px;height:240px;margin:0 auto;transform-style:preserve-3d;perspective:800px'>\
+<div style='position:absolute;bottom:0;width:240px;height:90px;background:linear-gradient(#ffb3d1,#ff4d88,#d81b60);border-radius:20px;box-shadow:0 18px 25px rgba(0,0,0,.25)'></div>\
+<div style='position:absolute;bottom:70px;left:20px;width:200px;height:70px;background:linear-gradient(#fffafc,#ffd6e7,#ffc1da);border-radius:18px'></div>\
 <div style='position:absolute;bottom:130px;left:55px;width:130px;height:45px;background:linear-gradient(#fff,#ffe8f0);border-radius:16px'></div>\
 <div id='candle' style='position:absolute;top:5px;left:108px;font-size:52px'>🕯️</div>\
 <div id='knife' style='position:absolute;right:-35px;top:95px;font-size:48px;transition:1s'>🔪</div>\
@@ -53,7 +53,7 @@ function playSong(){const a=document.getElementById('song');a.volume=1;a.play().
 for(let i=0;i<20;i++){let b=document.createElement('div');b.className='balloon';b.style.left=Math.random()*100+'vw';b.style.background='hsl('+Math.random()*360+',90%,60%)';b.style.animationDuration=(6+Math.random()*6)+'s';b.onclick=()=>b.classList.add('pop');document.body.appendChild(b);} 
 function lightCandle(){document.getElementById('candle').textContent='🔥';document.getElementById('msg').innerText='Candle jal gayi ✨ Make a wish ❤️';playSong();}
 document.body.addEventListener('click',()=>{playSong();fireworks();}
-window.addEventListener('load',()=>{setTimeout(()=>{playSong();},500);});,{once:true});
+window.addEventListener('load',()=>{const a=document.getElementById('song');a.muted=true;a.play().then(()=>{setTimeout(()=>{a.muted=false;a.volume=1;},800);}).catch(()=>{});setTimeout(()=>{playSong();},1200);});,{once:true});
 function showGift(){document.getElementById('giftBox').style.display='block';}
 setInterval(()=>{let h=document.createElement('div');h.innerHTML='💖';h.style.position='fixed';h.style.left=Math.random()*100+'vw';h.style.top='-20px';h.style.fontSize='24px';h.style.zIndex='1';h.style.animation='float 6s linear forwards';document.body.appendChild(h);setTimeout(()=>h.remove(),6000);},500);
 function updateCountdown(){const now=new Date();const next=new Date(now.getFullYear(),11,31,23,59,59);const diff=next-now;const d=Math.floor(diff/86400000),h=Math.floor(diff%86400000/3600000),m=Math.floor(diff%3600000/60000),s=Math.floor(diff%60000/1000);document.getElementById('countdown').innerText='⏳ Our Love Timer: '+d+'d '+h+'h '+m+'m '+s+'s';}
