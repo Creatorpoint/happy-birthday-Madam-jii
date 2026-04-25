@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=no"><meta name="theme-color" content="#ff2d75">
 <title>Msargam Baby Birthday App</title>
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:radial-gradient(circle at top,#1a1030,#090014 60%,#000);overflow:hidden;color:#fff;text-align:center}
-.container{position:relative;z-index:2;padding:14px;max-width:420px;margin:auto;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+body{margin:0;font-family:Arial,sans-serif;background:radial-gradient(circle at top,#2a1450,#12001f 45%,#050008 85%,#000);overflow:hidden;color:#fff;text-align:center}
+.container{position:relative;z-index:2;padding:16px;max-width:430px;margin:auto;min-height:100vh;display:flex;flex-direction:column;justify-content:center;background:rgba(255,255,255,.06);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.12);border-radius:28px;box-shadow:0 0 35px rgba(255,105,180,.15)}
 h1{font-size:2.2rem;text-shadow:0 0 25px #fff,0 0 35px #ff9ecf;letter-spacing:1px}
 #photoOrbit{position:relative;width:260px;height:260px;margin:20px auto}
 .orbitImg{position:absolute;width:90px;height:90px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 0 15px rgba(255,255,255,.8)}
@@ -25,7 +25,7 @@ button{padding:10px 16px;border:none;border-radius:10px;background:#fff;color:#e
 </head>
 <body>
 <div class='container'>
-<h1>Happy Birthday Msargam Baby ❤️</h1><p id='shayari' style='font-size:1.25rem;max-width:700px;margin:10px auto;line-height:1.7;background:rgba(255,255,255,.15);padding:14px;border-radius:18px;backdrop-filter:blur(6px);animation:blinkText 1s infinite'>🎉 Teri muskaan meri duniya hai, tera saath meri jaan hai.<br>Janamdin ke is khaas din par bas itni dua hai,<br>Har khushi tere kadmo me ho aur tu hamesha meri rahe. 💖</p>
+<h1 style='font-size:2.6rem;letter-spacing:1px;background:linear-gradient(90deg,#fff,#ff9bd5,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent'>Happy Birthday Msargam Baby ❤️</h1><p id='shayari' style='font-size:1.25rem;max-width:700px;margin:10px auto;line-height:1.7;background:rgba(255,255,255,.15);padding:14px;border-radius:18px;backdrop-filter:blur(6px);animation:blinkText 1s infinite'>🎉 Teri muskaan meri duniya hai, tera saath meri jaan hai.<br>Janamdin ke is khaas din par bas itni dua hai,<br>Har khushi tere kadmo me ho aur tu hamesha meri rahe. 💖</p>
 <div id='photoOrbit' style='margin-bottom:18px;z-index:6;position:relative'></div>
 <div class='cake' onclick='cutCake()' style='position:relative;width:300px;height:260px;margin:0 auto;transform-style:preserve-3d;perspective:800px'>\
 <div style='position:absolute;bottom:0;width:240px;height:90px;background:linear-gradient(#6b3b12,#3b1f08,#2a1405);border-radius:20px;box-shadow:0 18px 25px rgba(0,0,0,.25)'></div>\
@@ -36,10 +36,10 @@ button{padding:10px 16px;border:none;border-radius:10px;background:#fff;color:#e
 </div><div id='cakeMsg' style='font-size:1.2rem;margin-top:8px'>Tap the big cake to cut 🎂</div>
 <div id='msg'>Candle jalane ke liye button dabao ✨</div><button onclick='lightCandle()' style='padding:10px 18px;border:none;border-radius:12px;background:#ff9f1c;color:#fff;font-weight:bold;margin-top:10px;cursor:pointer'>🕯️ Light Candle</button><div id='countdown' style='font-size:1.2rem;margin-top:8px;font-weight:bold'></div><button onclick='showGift()' style='padding:10px 18px;border:none;border-radius:12px;background:#ffd700;color:#000;font-weight:bold;margin-top:10px;cursor:pointer'>🎁 Surprise Gift</button><div id='giftBox' style='display:none;margin-top:15px;font-size:1.3rem;background:rgba(255,255,255,.18);padding:15px;border-radius:16px'>💖 You are the best gift in my life, Msargam Baby 💖</div>
 <div class='controls'>
-<input id='imgUrl' placeholder='https://files.catbox.moe/jnhbpr.jpg'><br>
-<input id='songUrl' placeholder='https://files.catbox.moe/c90gos.mp3'><br>
+<input id='imgUrl' placeholder='Catbox image link paste karo'><br>
+<input id='songUrl' placeholder='Catbox song link paste karo'><br>
 <button onclick='applyMedia()'>Apply Media</button>
-<button onclick='playSong()'>▶ Play Music</button><button onclick='document.documentElement.requestFullscreen?.()'>📱 Fullscreen App</button>
+<button onclick='playSong()' style='box-shadow:0 0 18px rgba(255,255,255,.25)'>▶ Play Music</button><button onclick='document.documentElement.requestFullscreen?.()' style='box-shadow:0 0 18px rgba(255,255,255,.25)'>📱 Fullscreen App</button>
 </div>
 <audio id='song' loop src='https://files.catbox.moe/c90gos.mp3'></audio>
 </div>
@@ -57,7 +57,7 @@ document.body.addEventListener('click',()=>{playSong();fireworks();}
 window.addEventListener('load',()=>{const a=document.getElementById('song');a.muted=true;a.play().then(()=>{setTimeout(()=>{a.muted=false;a.volume=1;},800);}).catch(()=>{});setTimeout(()=>{playSong();},1200);});,{once:true});
 function showGift(){document.getElementById('giftBox').style.display='block';}
 setInterval(()=>{let h=document.createElement('div');h.innerHTML='💖';h.style.position='fixed';h.style.left=Math.random()*100+'vw';h.style.top='-20px';h.style.fontSize='24px';h.style.zIndex='1';h.style.animation='float 6s linear forwards';document.body.appendChild(h);setTimeout(()=>h.remove(),6000);},500);
-function updateCountdown(){const now=new Date();const next=new Date('2026-04-26T00:00:00');const diff=next-now;if(diff<=0){document.getElementById('countdown').innerText='🎉 Happy Birthday Msargam Darling ❤️';playSong();fireworks();return;}const d=Math.floor(diff/86400000),h=Math.floor(diff%86400000/3600000),m=Math.floor(diff%3600000/60000),s=Math.floor(diff%60000/1000);document.getElementById('countdown').innerText='⏳ Birthday Countdown: '+d+'d '+h+'h '+m+'m '+s+'s';}
+function updateCountdown(){const now=new Date();const next=new Date('2026-04-26T00:00:00');const diff=next-now;if(diff<=0){document.getElementById('countdown').innerText='🎉 Happy Birthday Msargam Darling ❤️';playSong();fireworks();return;}const d=Math.floor(diff/86400000),h=Math.floor(diff%86400000/3600000),m=Math.floor(diff%3600000/60000),s=Math.floor(diff%60000/1000);document.getElementById('countdown').innerText='⏳ ⏳ Grand Birthday Countdown: '+d+'d '+h+'h '+m+'m '+s+'s';}
 setInterval(updateCountdown,1000);updateCountdown();
 setInterval(()=>{for(let i=0;i<8;i++){let r=document.createElement('div');r.innerHTML='🌹';r.style.position='fixed';r.style.left=Math.random()*100+'vw';r.style.top='-20px';r.style.fontSize='24px';r.style.zIndex='4';r.style.opacity='.9';document.body.appendChild(r);setTimeout(()=>r.remove(),6000);} },1500);
 setInterval(()=>{fireworks();},5000);
