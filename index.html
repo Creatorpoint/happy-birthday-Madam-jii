@@ -24,9 +24,9 @@ button{padding:10px 16px;border:none;border-radius:10px;background:#fff;color:#e
 </style>
 </head>
 <body>
-<div id='surpriseOverlay' style='position:fixed;inset:0;background:radial-gradient(circle,#1b0128,#000);z-index:999;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#fff'>
+<div id='surpriseOverlay' onclick='openSurprise()' style='position:fixed;inset:0;background:radial-gradient(circle,#1b0128,#000);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#fff;cursor:pointer'>
 <div style='font-size:2rem;margin-bottom:18px;letter-spacing:1px'>🎁 A Special Surprise for Sargam Baby</div>
-<button id='openBtn' style='padding:16px 28px;border:none;border-radius:18px;font-size:1.2rem;font-weight:bold;background:linear-gradient(90deg,#ff4da6,#ffd1e8);cursor:pointer;box-shadow:0 0 25px rgba(255,105,180,.5)'>Open Surprise Box 💖</button>
+<button id='openBtn' type='button' style='padding:16px 28px;border:none;border-radius:18px;font-size:1.2rem;font-weight:bold;background:linear-gradient(90deg,#ff4da6,#ffd1e8);cursor:pointer;box-shadow:0 0 25px rgba(255,105,180,.5);pointer-events:none'>Tap Anywhere to Open 💖</button>
 </div>
 <div class='container' id='mainSite' style='display:none'>
 <h1 style='font-size:2.8rem;letter-spacing:1px;background:linear-gradient(90deg,#fff,#ff9bd5,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 20px rgba(255,255,255,.2)'>Happy Birthday Sargam Baby ❤️</h1><p id='shayari' style='font-size:1.3rem;max-width:700px;margin:10px auto;line-height:1.8;background:rgba(255,255,255,.12);padding:16px;border-radius:20px;backdrop-filter:blur(8px);font-family:cursive,Segoe Script,Brush Script MT'></p>
@@ -73,7 +73,7 @@ Janamdin par rab se itni si dua hai,
 Har khushi tere kadmo me ho, tu meri sadaa hai. 💖';const el=document.getElementById('shayari');el.innerHTML='';let i=0;const t=setInterval(()=>{el.innerHTML+=text[i]==='
 '?'<br>':text[i];i++;if(i>=text.length)clearInterval(t);},55);} 
 function openSurprise(){document.getElementById('surpriseOverlay').style.display='none';document.getElementById('mainSite').style.display='flex';playSong();typeShayari();fireworks();}
-document.addEventListener('DOMContentLoaded',()=>{const b=document.getElementById('openBtn');if(b){b.addEventListener('click',openSurprise);b.addEventListener('touchstart',openSurprise,{once:true});}});
+document.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{const o=document.getElementById('surpriseOverlay');if(o){o.style.display='flex';}},100);});
 </script>
 </body>
 </html>
