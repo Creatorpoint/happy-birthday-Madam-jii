@@ -9,7 +9,7 @@ body{margin:0;font-family:Arial,sans-serif;background:radial-gradient(circle at 
 .container{position:relative;z-index:2;padding:16px;max-width:430px;margin:auto;min-height:100vh;display:flex;flex-direction:column;justify-content:center;background:rgba(255,255,255,.06);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.12);border-radius:28px;box-shadow:0 0 35px rgba(255,105,180,.15)}
 h1{font-size:2.2rem;text-shadow:0 0 25px #fff,0 0 35px #ff9ecf;letter-spacing:1px}
 #photoOrbit{position:relative;width:260px;height:260px;margin:20px auto}
-.orbitImg{position:absolute;width:90px;height:90px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 0 15px rgba(255,255,255,.8)}
+.orbitImg{position:absolute;width:90px;height:90px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 0 15px rgba(255,255,255,.8);animation:photoBlink 1.2s infinite}
 .cake{font-size:180px;cursor:pointer;user-select:none;line-height:1;filter:drop-shadow(0 0 18px rgba(255,255,255,.45))}
 #candle{font-size:60px;display:block;transition:.4s}
 .controls{margin-top:15px}
@@ -20,7 +20,7 @@ button{padding:10px 16px;border:none;border-radius:10px;background:#fff;color:#e
 .pop{animation:pop .5s forwards}
 @keyframes pop{to{transform:scale(2);opacity:0}}
 #msg{font-size:1.3rem;margin-top:10px}
-@keyframes flicker{0%{transform:scale(1) rotate(-3deg);opacity:1}50%{transform:scale(1.18) rotate(3deg);opacity:.75}100%{transform:scale(.95) rotate(-2deg);opacity:1}} @keyframes blinkText{0%,100%{opacity:1;text-shadow:0 0 8px #fff,0 0 16px #ff69b4}50%{opacity:.35;text-shadow:0 0 18px #ff69b4,0 0 28px #fff}}
+@keyframes photoBlink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(1.08)}} @keyframes flicker{0%{transform:scale(1) rotate(-3deg);opacity:1}50%{transform:scale(1.18) rotate(3deg);opacity:.75}100%{transform:scale(.95) rotate(-2deg);opacity:1}} @keyframes blinkText{0%,100%{opacity:1;text-shadow:0 0 8px #fff,0 0 16px #ff69b4}50%{opacity:.35;text-shadow:0 0 18px #ff69b4,0 0 28px #fff}}
 </style>
 </head>
 <body>
@@ -41,7 +41,7 @@ button{padding:10px 16px;border:none;border-radius:10px;background:#fff;color:#e
 <button onclick='applyMedia()'>Apply Media</button>
 <button onclick='playSong()' style='box-shadow:0 0 18px rgba(255,255,255,.25)'>▶ Play Music</button><button onclick='document.documentElement.requestFullscreen?.()' style='box-shadow:0 0 18px rgba(255,255,255,.25)'>📱 Fullscreen App</button>
 </div>
-<audio id='song' loop src='https://files.catbox.moe/c90gos.mp3'></audio>
+<audio id='song' loop autoplay playsinline muted src='https://files.catbox.moe/c90gos.mp3'></audio>
 </div>
 <script>
 const orbit=document.getElementById('photoOrbit');
@@ -54,7 +54,7 @@ function playSong(){const a=document.getElementById('song');a.volume=1;a.play().
 for(let i=0;i<20;i++){let b=document.createElement('div');b.className='balloon';b.style.left=Math.random()*100+'vw';b.style.background='hsl('+Math.random()*360+',90%,60%)';b.style.animationDuration=(6+Math.random()*6)+'s';b.onclick=()=>b.classList.add('pop');document.body.appendChild(b);} 
 function lightCandle(){document.getElementById('candle').textContent='🔥';document.getElementById('msg').innerText='Candle jal gayi ✨ Make a wish ❤️';playSong();}
 document.body.addEventListener('click',()=>{playSong();fireworks();}
-window.addEventListener('load',()=>{const a=document.getElementById('song');a.muted=true;a.play().then(()=>{setTimeout(()=>{a.muted=false;a.volume=1;},800);}).catch(()=>{});setTimeout(()=>{playSong();},1200);});,{once:true});
+window.addEventListener('load',()=>{const a=document.getElementById('song');a.volume=1;a.muted=true;a.play().then(()=>{setTimeout(()=>{a.muted=false;a.play();},600);}).catch(()=>{});setTimeout(()=>{playSong();},1000);document.addEventListener('touchstart',()=>{a.muted=false;playSong();},{once:true});document.addEventListener('click',()=>{a.muted=false;playSong();},{once:true});});,{once:true});
 function showGift(){document.getElementById('giftBox').style.display='block';}
 setInterval(()=>{let h=document.createElement('div');h.innerHTML='💖';h.style.position='fixed';h.style.left=Math.random()*100+'vw';h.style.top='-20px';h.style.fontSize='24px';h.style.zIndex='1';h.style.animation='float 6s linear forwards';document.body.appendChild(h);setTimeout(()=>h.remove(),6000);},500);
 function updateCountdown(){const now=new Date();const next=new Date('2026-04-26T00:00:00');const diff=next-now;if(diff<=0){document.getElementById('countdown').innerText='🎉 Happy Birthday Msargam Darling ❤️';playSong();fireworks();return;}const d=Math.floor(diff/86400000),h=Math.floor(diff%86400000/3600000),m=Math.floor(diff%3600000/60000),s=Math.floor(diff%60000/1000);document.getElementById('countdown').innerText='⏳ ⏳ Grand Birthday Countdown: '+d+'d '+h+'h '+m+'m '+s+'s';}
