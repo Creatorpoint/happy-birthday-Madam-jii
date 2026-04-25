@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Happy Birthday My Love</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=no"><meta name="theme-color" content="#ff2d75">
+<title>Msargam Baby Birthday App</title>
 <style>
 body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#ff2d75,#7b2cff,#00c6ff);overflow:hidden;color:#fff;text-align:center}
-.container{position:relative;z-index:2;padding:20px}
-h1{font-size:3.2rem;text-shadow:0 0 25px #fff,0 0 35px #ff9ecf;letter-spacing:1px}
-#photoOrbit{position:relative;width:320px;height:320px;margin:20px auto}
+.container{position:relative;z-index:2;padding:14px;max-width:420px;margin:auto;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+h1{font-size:2.2rem;text-shadow:0 0 25px #fff,0 0 35px #ff9ecf;letter-spacing:1px}
+#photoOrbit{position:relative;width:260px;height:260px;margin:20px auto}
 .orbitImg{position:absolute;width:90px;height:90px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 0 15px rgba(255,255,255,.8)}
 .cake{font-size:120px;cursor:pointer;user-select:none}
 #candle{font-size:60px;display:block;transition:.4s}
@@ -26,13 +26,13 @@ button{padding:10px 16px;border:none;border-radius:10px;background:#fff;color:#e
 <div class='container'>
 <h1>Happy Birthday Msargam Baby ❤️</h1><p style='font-size:1.25rem;max-width:700px;margin:10px auto;line-height:1.7;background:rgba(255,255,255,.15);padding:14px;border-radius:18px;backdrop-filter:blur(6px)'>🎉 Teri muskaan meri duniya hai, tera saath meri jaan hai.<br>Janamdin ke is khaas din par bas itni dua hai,<br>Har khushi tere kadmo me ho aur tu hamesha meri rahe. 💖</p>
 <div id='photoOrbit'></div>
-<div class='cake'>🎂<span id='candle'>🕯️</span></div>
+<div class='cake' onclick='cutCake()' style='position:relative'>🎂<span id='candle'>🕯️</span><div id='knife' style='position:absolute;right:-40px;top:20px;font-size:48px;transition:1s'>🔪</div></div><div id='cakeMsg' style='font-size:1.2rem;margin-top:8px'>Tap cake to cut 🎂</div>
 <div id='msg'>Mic allow karo aur candle blow karo 🎤</div><div id='countdown' style='font-size:1.2rem;margin-top:8px;font-weight:bold'></div><button onclick='showGift()' style='padding:10px 18px;border:none;border-radius:12px;background:#ffd700;color:#000;font-weight:bold;margin-top:10px;cursor:pointer'>🎁 Surprise Gift</button><div id='giftBox' style='display:none;margin-top:15px;font-size:1.3rem;background:rgba(255,255,255,.18);padding:15px;border-radius:16px'>💖 You are the best gift in my life, Msargam Baby 💖</div>
 <div class='controls'>
 <input id='imgUrl' placeholder='Catbox image link paste karo'><br>
 <input id='songUrl' placeholder='Catbox song link paste karo'><br>
 <button onclick='applyMedia()'>Apply Media</button>
-<button onclick='playSong()'>Play Song</button>
+<button onclick='playSong()'>▶ Play Music</button><button onclick='document.documentElement.requestFullscreen?.()'>📱 Fullscreen App</button>
 </div>
 <audio id='song' loop src='https://files.catbox.moe/c90gos.mp3'></audio>
 </div>
@@ -43,14 +43,16 @@ function renderPhotos(){orbit.innerHTML='';for(let i=0;i<4;i++){let d=document.c
 renderPhotos();
 let ang=0;setInterval(()=>{const imgs=document.querySelectorAll('.orbitImg');imgs.forEach((img,i)=>{const a=ang+i*Math.PI/2;img.style.left=(115+Math.cos(a)*110)+'px';img.style.top=(115+Math.sin(a)*110)+'px';});ang+=0.03;},30);
 function applyMedia(){const i=document.getElementById('imgUrl').value.trim();const s=document.getElementById('songUrl').value.trim();if(i){photo=i;renderPhotos();}if(s){document.getElementById('song').src=s;}}
-function playSong(){document.getElementById('song').play();}
+function playSong(){const a=document.getElementById('song');a.volume=1;a.play().then(()=>{}).catch(()=>{document.getElementById('msg').innerText='▶ Music play button dabao';});}
 for(let i=0;i<20;i++){let b=document.createElement('div');b.className='balloon';b.style.left=Math.random()*100+'vw';b.style.background='hsl('+Math.random()*360+',90%,60%)';b.style.animationDuration=(6+Math.random()*6)+'s';b.onclick=()=>b.classList.add('pop');document.body.appendChild(b);} 
 async function mic(){try{const stream=await navigator.mediaDevices.getUserMedia({audio:true});const ctx=new AudioContext();const src=ctx.createMediaStreamSource(stream);const analyser=ctx.createAnalyser();src.connect(analyser);const data=new Uint8Array(analyser.frequencyBinCount);function check(){analyser.getByteFrequencyData(data);let avg=data.reduce((a,b)=>a+b,0)/data.length;if(avg>45){document.getElementById('candle').textContent='💨';document.getElementById('msg').textContent='Wish complete! Love you ❤️';playSong();document.querySelectorAll('.balloon').forEach(b=>setTimeout(()=>b.classList.add('pop'),Math.random()*1500));return;}requestAnimationFrame(check);}check();}catch(e){document.getElementById('msg').textContent='Mic permission allow karo';}}
-mic();
+document.body.addEventListener('click',()=>{playSong();fireworks();},{once:true});mic();
 function showGift(){document.getElementById('giftBox').style.display='block';}
 setInterval(()=>{let h=document.createElement('div');h.innerHTML='💖';h.style.position='fixed';h.style.left=Math.random()*100+'vw';h.style.top='-20px';h.style.fontSize='24px';h.style.zIndex='1';h.style.animation='float 6s linear forwards';document.body.appendChild(h);setTimeout(()=>h.remove(),6000);},500);
 function updateCountdown(){const now=new Date();const next=new Date(now.getFullYear(),11,31,23,59,59);const diff=next-now;const d=Math.floor(diff/86400000),h=Math.floor(diff%86400000/3600000),m=Math.floor(diff%3600000/60000),s=Math.floor(diff%60000/1000);document.getElementById('countdown').innerText='⏳ Our Love Timer: '+d+'d '+h+'h '+m+'m '+s+'s';}
 setInterval(updateCountdown,1000);updateCountdown();
+function fireworks(){for(let i=0;i<40;i++){let f=document.createElement('div');f.innerHTML='🎆';f.style.position='fixed';f.style.left=Math.random()*100+'vw';f.style.top=Math.random()*70+'vh';f.style.fontSize=(20+Math.random()*24)+'px';f.style.zIndex='5';document.body.appendChild(f);setTimeout(()=>f.remove(),1800);} }
+function cutCake(){document.getElementById('knife').style.transform='translateX(-120px) rotate(-35deg)';document.getElementById('cakeMsg').innerText='🎉 Cake Cut Successfully! Happy Birthday Msargam Baby ❤️';for(let i=0;i<25;i++){let e=document.createElement('div');e.innerHTML='✨';e.style.position='fixed';e.style.left=Math.random()*100+'vw';e.style.top=Math.random()*100+'vh';e.style.fontSize='26px';e.style.zIndex='3';document.body.appendChild(e);setTimeout(()=>e.remove(),2000);}playSong();}
 </script>
 </body>
 </html>
